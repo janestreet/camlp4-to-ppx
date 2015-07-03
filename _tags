@@ -1,0 +1,4 @@
+<**/*>: use_dynlink, use_camlp4_full
+<{lib,plugins}/*.ml>: camlp4of
+"lib": include
+"plugins": include
