@@ -23,7 +23,7 @@ into:
 type t =
   | A of int (* blah *)
   | B of string
-  [@deriving sexp, bin_io]
+  [@@deriving sexp, bin_io]
 
 let x = [%sexp_of: t * int ] (A 42, 10)
 ```
