@@ -99,6 +99,8 @@ EXTEND Gram
       "exception"; constructor_declaration; (loc1,drvs) = with_generators ->
       replace loc1 (mk_type_dec_with drvs);
       <:str_item<>>
+    | "exception"; constructor_declaration ->
+      <:str_item<>>
     ]];
 
   sig_item:
@@ -114,6 +116,8 @@ EXTEND Gram
     [[
       "exception"; constructor_declaration; (loc1,drvs) = with_generators ->
       replace loc1 (mk_type_dec_with drvs);
+      <:sig_item<>>
+    | "exception"; constructor_declaration ->
       <:sig_item<>>
     ]];
 
