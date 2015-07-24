@@ -38,11 +38,6 @@ substitutions using locations. After parsing the input file all the
 substitutions are applied to the original file and the result is
 printed.
 
-Note that this only works for syntax extensions that are simple
-enough. For instance it would require a bit more work to support the
-lwt syntax extension as one would have to change the order of a few
-syntactic fragments (the pattern and the first expression).
-
 To add a new plugin, add a file to the plugins/ directory and the
 corresponding line in `bin/main.ml`. `pa_ounit.ml` should be a good
 model to understand how it works.
