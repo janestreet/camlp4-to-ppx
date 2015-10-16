@@ -52,7 +52,14 @@ let do_output () =
       output_string stdout repl;
       loop stop rest
   in
-  let substs = List.sort !substs ~cmp:(fun a b -> compare a.start b.start) in
+  let substs = List.sort !substs ~cmp:(fun a b ->
+    let d = compare a.start b.start in
+    if d = 0 then
+      (* This happens with 0-length substitutions *)
+      compare a.stop b.stop
+    else
+      d)
+  in
   loop 0 substs
 ;;
 
