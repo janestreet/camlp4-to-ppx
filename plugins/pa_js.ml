@@ -29,8 +29,11 @@ EXTEND Gram
      ]];
 
   comma_exprs:
-    [[ expr_within_comma_separated_list ; comma_loc = [ "," -> _loc ]; SELF ->
-    replace comma_loc "";
+    [[ first_loc = expr_within_comma_separated_list ; comma_loc = [ "," -> _loc ]; self_loc = SELF ->
+       let self_loc = match self_loc with Some x -> x | _ -> assert false in
+       if Loc.stop_off first_loc = Loc.start_off self_loc - 1
+       then replace comma_loc " "
+       else replace comma_loc "";
        Some _loc
      | expr_within_comma_separated_list ->
        Some _loc
@@ -81,8 +84,10 @@ EXTEND Gram
        rpar_loc = [")" -> _loc] ->
        begin
          match comma_exprs_loc with
-         | Some _ ->
-           replace lpar_loc "";
+         | Some _loc ->
+           if Loc.stop_off e_loc = Loc.start_off _loc - 1
+           then replace lpar_loc " "
+           else replace lpar_loc "";
            replace rpar_loc "";
            <:expr< >>
          | None ->
