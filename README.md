@@ -30,6 +30,13 @@ let x = [%sexp_of: t * int ] (A 42, 10)
 
 For each syntax extension to convert a plugin needs to be written.
 
+Plugins
+-------
+
+This repository has plugins for all old jane street camlp4 syntax extensions.
+The [ocsigen fork](https://github.com/ocsigen/camlp4-to-ppx/tree/ocsigen) has
+plugins for deriving, eliom, and other ocsigen related syntax extensions.
+
 How does it work?
 -----------------
 
