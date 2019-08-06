@@ -31,7 +31,7 @@ let file_contents =
   let len = in_channel_length ic in
   let str = Bytes.create len in
   really_input ic str 0 len;
-  str
+  Bytes.to_string str
 
 type subst =
   { start : int
